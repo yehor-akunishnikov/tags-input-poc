@@ -1,0 +1,100 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.tags-input {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  padding: 2px 8px 6px 8px;
+
+  border: 1px solid #000;
+  border-radius: 8px;
+  cursor: text;
+}
+
+.tags {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.tag {
+  display: inline-block;
+
+  padding: 2px 10px 2px 14px;
+  margin-right: 4px;
+  margin-top: 4px;
+  position: relative;
+
+  color: #fff;
+  font-size: 12px;
+  white-space: nowrap;
+
+  background-color: #959595;
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+}
+
+.remove-tag {
+  position: absolute;
+  top: 6px;
+  left: 2px;
+
+  display: inline-block;
+  line-height: 0;
+
+  font-size: 8px;
+
+  color: #ffffff;
+}
+
+.input-container {
+  display: inline-block;
+}
+
+input {
+  display: inline-block;
+  border: none;
+
+  max-width: 80px;
+
+  font-size: 12px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.to-merge {
+  background-color: #4e2936;
+}
+
+.paring {
+  background-color: #4e2936;
+}
+
+#resultText {
+  background-color: #959595;
+  color: #000;
+
+  padding: 10px;
+}
