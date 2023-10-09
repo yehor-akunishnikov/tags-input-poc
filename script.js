@@ -84,19 +84,22 @@ applyButton.addEventListener('click', (e) => {
     inputField.removeAttribute('disabled');
     tagsList.setAttribute('title', '');
     mergeMode = false;
+    paringBuffer = [];
   }
 });
 
 cancelButton.addEventListener('click', () => {
   tagsList.querySelectorAll('.tag').forEach((tag) => {
     tag.classList.remove('to-merge');
-    applyButton.classList.add('hidden');
-    cancelButton.classList.add('hidden');
-    mergeButton.classList.remove('hidden');
-    inputField.removeAttribute('disabled');
-    tagsList.setAttribute('title', '');
-    mergeMode = false;
   });
+
+  paringBuffer = [];
+  applyButton.classList.add('hidden');
+  cancelButton.classList.add('hidden');
+  mergeButton.classList.remove('hidden');
+  inputField.removeAttribute('disabled');
+  tagsList.setAttribute('title', '');
+  mergeMode = false;
 });
 
 tagsInput.addEventListener('click', (e) => {
