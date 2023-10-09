@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', () => {
 const tagsInput = document.querySelector('#container');
 const tagsList = tagsInput.querySelector('.tags');
 const inputContainer = document.querySelector('.input-container');
@@ -163,4 +164,6 @@ tagsInput.addEventListener('keyup', (e) => {
       }
     }
   }
+});
+
 });
