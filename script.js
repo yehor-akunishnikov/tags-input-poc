@@ -10,6 +10,7 @@ const inputField = document.querySelector('.input-field');
 const resultText = document.querySelector('#resultText');
 
 let tags = [];
+let paringBuffer = [];
 let mergeMode = false;
 
 resultBtn.addEventListener('click', () => {
@@ -66,22 +67,9 @@ mergeButton.addEventListener('click', (e) => {
 });
 
 applyButton.addEventListener('click', (e) => {
-  const tagsToMerge = tagsList.querySelectorAll('.to-merge');
-  let paringArray = [];
-
-  tagsToMerge.forEach((tag) => {
-    const text = tag.querySelector('.tag-content').innerText;
-
-    paringArray.push(text);
-    // tags = tags.filter((tagText) => tagText !== text);
-  });
-
-  // tagsToMerge.forEach((tag) => {
-  //   tag.remove();
-  // });
-
-  if (paringArray.length) {
-    const paringText = paringArray.join('/');
+  if (paringBuffer.length) {
+    const tagsToMerge = tagsList.querySelectorAll('.to-merge');
+    const paringText = paringBuffer.join('/');
 
     tagsList.prepend(createTag(paringText, true));
     tags = [paringText, ...tags];
@@ -132,7 +120,19 @@ tagsInput.addEventListener('click', (e) => {
 
     if (element.classList.contains('tag-content')) {
       if (!element.parentNode.classList.contains('paring')) {
-        element.parentNode.classList.toggle('to-merge');
+        const isMarkedToMerge =
+          element.parentNode.classList.contains('to-merge');
+        const text = element.parentNode.querySelector('.tag-content').innerText;
+
+        if (isMarkedToMerge) {
+          element.parentNode.classList.remove('to-merge');
+          paringBuffer = paringBuffer.filter(
+            (paringItem) => paringItem !== text
+          );
+        } else {
+          element.parentNode.classList.add('to-merge');
+          paringBuffer.push(text);
+        }
       }
     }
   }
@@ -165,5 +165,4 @@ tagsInput.addEventListener('keyup', (e) => {
     }
   }
 });
-
 });
