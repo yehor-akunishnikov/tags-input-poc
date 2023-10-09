@@ -12,21 +12,41 @@
     <script src="script.js"></script>
   </head>
   <body>
-    <label id="container" class="tags-input" for="tags-input">
-      <ul class="tags">
-        <li class="input-container">
-          <input
-            placeholder="Додати персонажа"
-            class="input-field"
-            id="tags-input"
-            type="text"
-          />
-        </li>
-      </ul>
-    </label>
-    <button id="merge-button">Створити пейринг</button>
-    <button class="hidden" id="apply-merge">застосувати</button>
-    <button class="hidden" id="cancel-merge">відмінити</button>
+    <div class="container" id="container">
+      <label class="tags-input" for="tags-input">
+        <ul class="tags"></ul>
+      </label>
+      <div class="input-group">
+        <input
+          placeholder="Додати персонажа"
+          class="input-field"
+          id="tags-input"
+          type="text"
+        />
+        <button class="input-group-btn create-paring-btn" id="merge-button">
+          Створити пейринг
+        </button>
+        <button
+          title="Підтвердити створення пейрингу"
+          class="input-group-btn apply-btn hidden"
+          id="apply-merge"
+        >
+          ✔
+        </button>
+        <button
+          title="Відмінити створення пейрингу"
+          class="input-group-btn cancel-btn hidden"
+          id="cancel-merge"
+        >
+          ✕
+        </button>
+      </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
     <hr />
     <div>
       <button id="result">Показати результат</button>

@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
 const tagsInput = document.querySelector('#container');
 const tagsList = tagsInput.querySelector('.tags');
 const inputContainer = document.querySelector('.input-container');
@@ -10,7 +9,6 @@ const inputField = document.querySelector('.input-field');
 const resultText = document.querySelector('#resultText');
 
 let tags = [];
-
 let mergeMode = false;
 
 resultBtn.addEventListener('click', () => {
@@ -54,12 +52,15 @@ const createTag = (text, isParing = false) => {
 
 mergeButton.addEventListener('click', (e) => {
   if (tags.length) {
-    e.target.setAttribute('disabled', true);
+    e.target.classList.add('hidden');
     mergeMode = true;
     applyButton.classList.remove('hidden');
     cancelButton.classList.remove('hidden');
     inputField.setAttribute('disabled', true);
-    tagsInput.setAttribute('title', 'Обери мінімум два персонажі, щоб створити пейринг');
+    tagsList.setAttribute(
+      'title',
+      'Обери мінімум два персонажі, щоб створити пейринг'
+    );
   }
 });
 
@@ -90,17 +91,22 @@ applyButton.addEventListener('click', (e) => {
 
     applyButton.classList.add('hidden');
     cancelButton.classList.add('hidden');
-    mergeButton.removeAttribute('disabled');
+    mergeButton.classList.remove('hidden');
     inputField.removeAttribute('disabled');
-    tagsInput.setAttribute('title', '');
+    tagsList.setAttribute('title', '');
     mergeMode = false;
   }
 });
 
 cancelButton.addEventListener('click', () => {
-  tagsList.querySelector('.tag').forEach((tag) => {
+  tagsList.querySelectorAll('.tag').forEach((tag) => {
     tag.classList.remove('to-merge');
-    tagsInput.setAttribute('title', '');
+    applyButton.classList.add('hidden');
+    cancelButton.classList.add('hidden');
+    mergeButton.classList.remove('hidden');
+    inputField.removeAttribute('disabled');
+    tagsList.setAttribute('title', '');
+    mergeMode = false;
   });
 });
 
@@ -157,6 +163,4 @@ tagsInput.addEventListener('keyup', (e) => {
       }
     }
   }
-});
-
 });
