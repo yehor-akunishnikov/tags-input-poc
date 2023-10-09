@@ -180,5 +180,4 @@ tagsInput.addEventListener('keyup', (e) => {
     }
   }
 });
-
 });
