@@ -69,22 +69,34 @@ mergeButton.addEventListener('click', (e) => {
 applyButton.addEventListener('click', (e) => {
   if (paringBuffer.length) {
     const tagsToMerge = tagsList.querySelectorAll('.to-merge');
-    const paringText = paringBuffer.join('/');
+    const paringText = paringBuffer
+      .sort((prev, next) => {
+        if (prev.toLowerCase() < next.toLowerCase()) {
+          return -1;
+        }
+        if (prev.toLowerCase() > next.toLowerCase()) {
+          return 1;
+        }
+        return 0;
+      })
+      .join('/');
 
-    tagsList.prepend(createTag(paringText, true));
-    tags = [paringText, ...tags];
+    if (!tags.some((tagText) => tagText === paringText)) {
+      tagsList.prepend(createTag(paringText, true));
+      tags = [paringText, ...tags];
 
-    tagsToMerge.forEach((tag) => {
-      tag.classList.remove('to-merge');
-    });
+      tagsToMerge.forEach((tag) => {
+        tag.classList.remove('to-merge');
+      });
 
-    applyButton.classList.add('hidden');
-    cancelButton.classList.add('hidden');
-    mergeButton.classList.remove('hidden');
-    inputField.removeAttribute('disabled');
-    tagsList.setAttribute('title', '');
-    mergeMode = false;
-    paringBuffer = [];
+      applyButton.classList.add('hidden');
+      cancelButton.classList.add('hidden');
+      mergeButton.classList.remove('hidden');
+      inputField.removeAttribute('disabled');
+      tagsList.setAttribute('title', '');
+      mergeMode = false;
+      paringBuffer = [];
+    }
   }
 });
 
@@ -168,4 +180,5 @@ tagsInput.addEventListener('keyup', (e) => {
     }
   }
 });
+
 });
