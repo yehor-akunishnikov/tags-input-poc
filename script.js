@@ -59,6 +59,7 @@ mergeButton.addEventListener('click', (e) => {
     applyButton.classList.remove('hidden');
     cancelButton.classList.remove('hidden');
     inputField.setAttribute('disabled', true);
+    tagsInput.setAttribute('title', 'Обери мінімум два персонажі, щоб створити пейринг');
   }
 });
 
@@ -91,6 +92,7 @@ applyButton.addEventListener('click', (e) => {
     cancelButton.classList.add('hidden');
     mergeButton.removeAttribute('disabled');
     inputField.removeAttribute('disabled');
+    tagsInput.setAttribute('title', '');
     mergeMode = false;
   }
 });
@@ -98,6 +100,7 @@ applyButton.addEventListener('click', (e) => {
 cancelButton.addEventListener('click', () => {
   tagsList.querySelector('.tag').forEach((tag) => {
     tag.classList.remove('to-merge');
+    tagsInput.setAttribute('title', '');
   });
 });
 
