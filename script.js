@@ -131,11 +131,13 @@ tagsInput.addEventListener('click', (e) => {
   }
 
   if (element.classList.contains('remove-tag')) {
-    const text = element.parentNode.querySelector('.tag-content').innerText;
+    if (!mergeMode) {
+      const text = element.parentNode.querySelector('.tag-content').innerText;
 
-    tags = tags.filter((tagText) => tagText !== text);
+      tags = tags.filter((tagText) => tagText !== text);
 
-    element.parentNode.remove();
+      element.parentNode.remove();
+    }
   }
 });
 
