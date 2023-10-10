@@ -22,7 +22,6 @@ class ParingsInput {
     this.resultBtn = document.querySelector('#result');
     this.inputField = document.querySelector('.input-field');
     this.resultText = document.querySelector('#resultText');
-    this.mergeIcon = document.querySelector('.merge-icon');
   }
 
   setListeners() {
@@ -227,7 +226,6 @@ class ParingsInput {
     this.mergeButton.classList.add('hidden');
     this.applyButton.classList.remove('hidden');
     this.cancelButton.classList.remove('hidden');
-    this.mergeIcon.classList.remove('hidden');
     this.inputField.setAttribute('placeholder', 'Персонажів у пейрингу: 0');
     this.inputField.setAttribute('disabled', true);
     this.isMergeMode = true;
@@ -244,7 +242,6 @@ class ParingsInput {
     this.applyButton.classList.add('hidden');
     this.cancelButton.classList.add('hidden');
     this.mergeButton.classList.remove('hidden');
-    this.mergeIcon.classList.add('hidden');
     this.inputField.setAttribute('placeholder', 'Додати персонажа');
     this.inputField.removeAttribute('disabled');
     this.isMergeMode = false;
